@@ -348,7 +348,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
 .submit-row .fine { font-size: 12px; color: var(--ink-light); text-align: center; }
 .btn[disabled] { opacity: .6; cursor: progress; }
 
-.success { display: grid; gap: 14px; text-align: left; }
+.success:not([hidden]) { display: grid; gap: 14px; text-align: left; }
 .success .tick { width: 52px; height: 52px; border-radius: 50%; background: var(--green-soft); display: grid; place-items: center; }
 .success .tick svg { width: 26px; height: 26px; stroke: var(--green); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .success h3 { font-size: 30px; }
