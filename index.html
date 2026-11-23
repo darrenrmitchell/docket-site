@@ -5,13 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0d3d3a">
 <!-- Social sharing: replace placeholders -->
-<meta property="og:title" content="Docket Health">
-<meta property="og:description" content="One place to see your parent's daily readings, medications and alerts. Launching November 2026 across Jamaica.">
+<meta property="og:title" content="Docket Health · Looking after a loved one? You’re not carrying it alone.">
+<meta property="og:description" content="A short daily WhatsApp check-in for families looking after a loved one in Jamaica, with a person from our team behind every alert.">
 <meta property="og:url" content="https://docket-tech.com">
 <meta property="og:image" content="https://docket-tech.com/og-image.png">
 <link rel="icon" href="/favicon.png">
-<title>Docket Health</title>
-<meta name="description" content="Docket gives families coordinating a parent's chronic care one place to see daily readings, medications and alerts. Check-ins happen on WhatsApp. Launching November 2026 across Jamaica.">
+<title>Docket Health · Looking after a loved one? You’re not carrying it alone.</title>
+<meta name="description" content="Looking after a loved one? You’re not carrying it alone. Docket gives families looking after a loved one in Jamaica one place to see daily readings, medications and alerts, with a person from our team behind every alert.">
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify reset get_distinct_id set_config opt_in_capturing opt_out_capturing has_opted_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_rsZtUukRBJPytjQAKAFmpRhu8G2veSRqbErPEWYePoM9', {
+  api_host: 'https://us.i.posthog.com',
+  persistence: 'memory',
+  autocapture: false,
+  capture_pageview: true,
+  capture_pageleave: true,
+  disable_session_recording: true,
+  disable_surveys: true,
+  person_profiles: 'identified_only'
+});
+try {
+  var q = new URLSearchParams(location.search), sp = {};
+  ['ref','ag','ch','ph','hp','gp','utm_source','utm_medium','utm_campaign'].forEach(function (k) { if (q.get(k)) sp[k] = q.get(k); });
+  posthog.register(sp);
+} catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap">
@@ -182,6 +200,9 @@ p { margin: 0; }
 .hero h1 { font-size: clamp(38px, 6.4vw, 64px); color: #fff; }
 .hero h1 em { font-style: italic; color: var(--teal-300); }
 .hero-sub { font-size: clamp(17px, 2vw, 19px); color: rgba(255,255,255,.72); max-width: 540px; }
+.hero-qual { font-size: 14px; color: rgba(255,255,255,.62); max-width: 540px; margin: 2px 0 0; }
+@media (min-width: 760px) { .role--primary { grid-column: 1 / -1; } }
+.success .btn { justify-self: start; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
 .hero-note { font-size: 13px; color: rgba(255,255,255,.55); }
 .hero-note a { color: rgba(255,255,255,.85); }
@@ -391,7 +412,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       <a class="navlink" href="#how">How it works</a>
       <a class="navlink" href="#who">Who it's for</a>
       <a class="navlink" href="#faq">FAQ</a>
-            <a class="btn btn--primary" href="#join">Join the founding households</a>
+            <a class="btn btn--primary" href="#join" data-cta="nav">Join the founding households</a>
     </nav>
   </div>
 </header>
@@ -402,11 +423,12 @@ legend + .chips, legend + .hint { margin-top: 10px; }
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-copy on-dark">
-        <span class="launch-pill"><span class="dot" aria-hidden="true"></span>Launching November 2026 · Island-wide</span>
-        <h1 id="hero-title">Know how your parent is doing today. <em>Without the five phone calls.</em></h1>
-        <p class="hero-sub">You manage the nurse, the doctor visits, the medications and the family updates, usually from your phone between everything else. Docket collects a daily check-in over WhatsApp and shows you the readings, missed doses and alerts in one place.</p>
+        <span class="launch-pill"><span class="dot" aria-hidden="true"></span>Now taking founding households · Island-wide</span>
+        <h1 id="hero-title">Looking after a loved one? <em>You’re not carrying it alone.</em></h1>
+        <p class="hero-sub">Your loved one, or their nurse or helper, answers a short WhatsApp check-in each day: readings and medications. You see it in one place. If a reading crosses the limits you set, a person from our team checks it with you.</p>
+        <p class="hero-qual">For families in Jamaica looking after a loved one with high blood pressure or diabetes, with a blood pressure monitor at home.</p>
         <div class="hero-ctas">
-          <a class="btn btn--primary" href="#join">Join the founding households</a>
+          <a class="btn btn--primary" href="#join" data-cta="hero">Join the founding households</a>
           <a class="btn btn--ghost" href="#how">See how it works</a>
         </div>
               </div>
@@ -448,23 +470,23 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       <div class="section-head">
         <span class="eyebrow">The problem</span>
         <h2 id="problem-title">The care is happening. You just can't see it.</h2>
-        <p>Your parent has a nurse or helper, a doctor and a list of medications. The information about all of it is in a dozen places, and most of it reaches you late.</p>
+        <p>There's a doctor, a list of medications, and maybe a nurse or helper. Right now, what happens each day lives in the family WhatsApp group, a notebook by the bed, and whatever someone remembers to tell you when you call.</p>
       </div>
       <div class="problems">
         <article class="problem">
-          <h3 class="q">"Did she take her pressure tablets?"</h3>
+          <h3 class="q">"Did she take her pressure tablets today?"</h3>
           <p>You find out about a missed dose days later, or not at all. Readings get written on scraps of paper, or not written down.</p>
         </article>
         <article class="problem">
-          <h3 class="q">"What did the doctor say?"</h3>
-          <p>Appointments come and go with no shared record. The next visit starts from memory, and the doctor sees one reading instead of a month of them.</p>
+          <h3 class="q">"If her pressure is high this morning, who finds out?"</h3>
+          <p>Often nobody, until someone calls in the evening. With Docket, a reading over your limits alerts you, and a person from our team checks it with you.</p>
         </article>
         <article class="problem">
           <h3 class="q">"Is everybody up to date?"</h3>
           <p>Siblings, relatives who help pay, and the nurse each have part of the picture. You end up relaying updates by phone and WhatsApp, one person at a time.</p>
         </article>
       </div>
-      <p class="problem-close"><strong>Docket gives the person running the care one view of it.</strong> Daily readings, medications, appointments and alerts sit in one place, and the people around your parent stay informed without you chasing them.</p>
+      <p class="problem-close"><strong>Docket gives the person running the care one view of it.</strong> Daily readings, medications, appointments and alerts sit in one place, and the people around your loved one stay informed without you chasing them.</p>
     </div>
   </section>
 
@@ -474,7 +496,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       <div class="section-head">
         <span class="eyebrow">How it works</span>
         <h2 id="how-title">Set up once with a person. Then it runs every day.</h2>
-        <p>There's nothing to install for your parent or their nurse. You use Docket on your phone or computer.</p>
+        <p>There's nothing to install for your loved one or their nurse. You use Docket on your phone or computer.</p>
       </div>
       <div class="steps">
         <div class="step">
@@ -489,7 +511,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <div class="step-num">Step 2</div>
           <div>
             <h3>A daily check-in on WhatsApp</h3>
-            <p>Each day your parent, or their nurse or helper, gets a short check-in: today's readings and whether the medications were taken. They reply in the chat.</p>
+            <p>Each day your loved one, or their nurse or helper, gets a short check-in: today's readings and whether the medications were taken. They reply in the chat.</p>
             <span class="chan">WhatsApp</span>
           </div>
         </div>
@@ -524,7 +546,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
             <li>A shared calendar for appointments, with a record of each visit</li>
             <li>A weekly summary you can send to family</li>
           </ul>
-          <a class="rlink" href="#join" data-role-link="coordinator">Join as a coordinator</a>
+          <a class="rlink" href="#join" data-role-link="coordinator" data-cta="role_coordinator">Join as a coordinator</a>
         </article>
         <article class="role">
           <span class="role-tag">Care Circle</span>
@@ -534,28 +556,17 @@ legend + .chips, legend + .hint { margin-top: 10px; }
             <li>A weekly summary of readings, medications and visits</li>
             <li>Confidence that what you contribute to is happening</li>
           </ul>
-          <a class="rlink" href="#join" data-role-link="funder">Register your interest</a>
+          <a class="rlink" href="#join" data-role-link="funder" data-cta="role_funder">Register your interest</a>
         </article>
         <article class="role">
           <span class="role-tag">On WhatsApp</span>
           <h3>Nurses and helpers</h3>
-          <p>The people providing day-to-day care. The check-in arrives on WhatsApp and takes a minute to answer.</p>
+          <p>The people providing day-to-day care. Your care, on record: the check-in takes a minute on WhatsApp, and the family sees the work you do.</p>
           <ul>
             <li>No new app and no logins</li>
             <li>Record the readings you already take</li>
             <li>Needs a BP monitor, plus a glucometer if the patient is diabetic</li>
           </ul>
-          <a class="rlink" href="#join" data-role-link="nurse">Register as a nurse or helper</a>
-        </article>
-        <article class="role">
-          <span class="role-tag">Partners</span>
-          <h3>Doctors and clinics</h3>
-          <p>Patients who arrive with a record of daily readings and medication history give you more to work with than a single reading taken in your office.</p>
-          <ul>
-            <li>A summary families can bring to appointments</li>
-            <li>Early conversations with practices about working together</li>
-          </ul>
-          <a class="rlink" href="mailto:mydockethealth@gmail.com?subject=Partnering%20with%20Docket">Talk to us about partnering</a>
         </article>
       </div>
     </div>
@@ -566,7 +577,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">What you get</span>
-        <h2 id="features-title">Everything about your parent's care, in one place</h2>
+        <h2 id="features-title">Everything about your loved one's care, in one place</h2>
       </div>
       <div class="features">
         <div class="feature">
@@ -584,7 +595,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
         <div class="feature">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/></svg>
           <h3>Shared appointment calendar</h3>
-          <p>Add and update visits. Your parent gets a reminder on WhatsApp, and you capture what the doctor said afterwards.</p>
+          <p>Add and update visits. Your loved one gets a reminder on WhatsApp, and you capture what the doctor said afterwards.</p>
           <span class="where">Docket</span>
         </div>
         <div class="feature">
@@ -622,7 +633,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <li><strong>Consent before anything else</strong><span>The patient agrees before check-ins begin. Where a patient can't consent, their caregiver consents on their behalf.</span></li>
           <li><strong>The patient decides what's kept</strong><span>Choose which information is stored and for how long.</span></li>
           <li><strong>Never sold</strong><span>Health information isn't sold or shared with advertisers, and isn't disclosed to anyone without explicit authorisation.</span></li>
-          <li><strong>Support for care, not a diagnosis</strong><span>Docket doesn't diagnose and doesn't replace your parent's doctor.</span></li>
+          <li><strong>Support for care, not a diagnosis</strong><span>Docket doesn't diagnose and doesn't replace their doctor.</span></li>
         </ul>
         <p class="emergency">Docket is not an emergency service. In an emergency call <b>119</b> (police) or <b>110</b> (ambulance and fire).</p>
       </div>
@@ -635,7 +646,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       <div class="signup-pitch">
         <span class="eyebrow">Founding households</span>
         <h2 id="join-title">Be one of the first families on <em>Docket.</em></h2>
-        <p>We're launching across Jamaica in November 2026 with a limited number of founding households, so we can set up every family personally.</p>
+        <p>We're taking a limited number of founding households across Jamaica, so we can set up every family personally.</p>
         <ul class="founding">
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A personal welcome call to set up your Care Circle</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Founding-household terms, shared on the call</li>
@@ -724,6 +735,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <h3>You're on the list.</h3>
           <p id="success-msg">Thanks for registering your interest in Docket.</p>
           <p class="next" id="success-next"></p>
+          <a class="btn btn--primary" id="success-book" href="#" target="_blank" rel="noopener" hidden>Pick a time for your welcome call</a>
           <p class="demo" id="success-demo" hidden>Preview mode: no form endpoint is set, so this submission wasn't sent.</p>
         </div>
       </div>
@@ -743,16 +755,16 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <p>Founding households get founding terms, which we'll go through on your welcome call. There's nothing to pay to register your interest.</p>
         </details>
         <details>
-          <summary>Does my parent need a smartphone?</summary>
-          <p>They, or their nurse or helper, need WhatsApp. That's all. If someone usually helps your parent with their phone, that works too.</p>
+          <summary>Does my loved one need a smartphone?</summary>
+          <p>They, or their nurse or helper, need WhatsApp. That's all. If someone usually helps them with their phone, that works too.</p>
         </details>
         <details>
           <summary>What equipment do we need?</summary>
-          <p>A blood pressure monitor at home, and a glucometer if your parent is diabetic. Docket records the readings these take. We'll confirm what you need on the welcome call.</p>
+          <p>A blood pressure monitor at home, and a glucometer if diabetes is part of the care. Docket records the readings these take. We'll confirm what you need on the welcome call.</p>
         </details>
         <details>
           <summary>Where is Docket available?</summary>
-          <p>Across Jamaica, from November 2026. Places are limited for the first group of founding households.</p>
+          <p>Across Jamaica. Places are limited for the first group of founding households.</p>
         </details>
         <details>
           <summary>I live overseas. Can I use Docket?</summary>
@@ -760,11 +772,11 @@ legend + .chips, legend + .hint { margin-top: 10px; }
         </details>
         <details>
           <summary>Is Docket a medical service?</summary>
-          <p>No. Docket helps families organise and keep track of care. It doesn't diagnose, prescribe, or replace your parent's doctor, and it isn't an emergency service.</p>
+          <p>No. Docket helps families organise and keep track of care. It doesn't diagnose, prescribe, or replace their doctor, and it isn't an emergency service.</p>
         </details>
         <details>
           <summary>What happens after I sign up?</summary>
-          <p>We'll email you before launch. Founding households get a call to set up their Care Circle, and you'll receive a link to sign in to Docket.</p>
+          <p>You can book a welcome call straight away. We set up your Care Circle on the call, and check-ins start once your loved one says YES on WhatsApp. You'll then receive a link to sign in to Docket.</p>
         </details>
       </div>
     </div>
@@ -785,7 +797,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
         <ul>
           <li><a href="#how">How it works</a></li>
           <li><a href="#who">Who it's for</a></li>
-          <li><a href="#join">Join the founding households</a></li>
+          <li><a href="#join" data-cta="footer">Join the founding households</a></li>
                     <li><a href="mailto:mydockethealth@gmail.com?subject=Partnering%20with%20Docket">For clinics</a></li>
         </ul>
       </div>
@@ -797,7 +809,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       </div>
     </div>
     <div class="foot-base">
-      <span>© 2026 Docket Health LLC · Kingston, Jamaica</span>
+      <span>© 2026 Docket Technologies Limited · Kingston, Jamaica</span>
       <span><a href="/privacy.html" style="color:inherit">Privacy Policy</a></span>
     </div>
   </div>
@@ -815,9 +827,20 @@ legend + .chips, legend + .hint { margin-top: 10px; }
 const DOCKET_CONFIG = {
   FORM_ENDPOINT: 'https://script.google.com/macros/s/AKfycbyjbfUnn3jlPyMI2n9PR6IEAIb7gLUzps_BMNrj1Gs6nRtOvee4NgeHz7ArmGQg6NZTMA/exec',
   FORM_MODE: 'no-cors',
-  CONSENT_VERSION: 'landing-v1-2026-10',
-  SOURCE: 'landing_v1'
+  CONSENT_VERSION: 'landing-v2-2026-11',
+  SOURCE: 'landing_v1',
+  /* Welcome-call booking page (Google Calendar "Docket Launch"). Leave '' to hide the button. */
+  BOOKING_URL: ''
 };
+
+/* Analytics: PostHog, memory-only persistence (no cookies or local storage), no autocapture,
+   no session recording. Events never carry email or health answers. */
+function track(name, props) {
+  try { if (window.posthog && window.posthog.capture) window.posthog.capture(name, props || {}); } catch (e) {}
+}
+document.querySelectorAll('[data-cta]').forEach(a => {
+  a.addEventListener('click', () => track('cta_clicked', { location: a.getAttribute('data-cta') }));
+});
 
 (function () {
   const form = document.getElementById('signup');
@@ -877,7 +900,7 @@ const DOCKET_CONFIG = {
   /* Segment tag: launch cohort = households already paying for care */
   function segmentFor(role, provider) {
     if (role === 'nurse_helper' || role === 'clinician') return 'partner';
-    if (provider === 'paid_nurse' || provider === 'paid_helper' || provider === 'mix') return 'launch_cohort';
+    if (provider === 'paid_nurse' || provider === 'paid_helper' || provider === 'mix' || provider === 'family_only') return 'launch_cohort';
     return 'nurture';
   }
 
@@ -926,6 +949,7 @@ const DOCKET_CONFIG = {
         const res = await fetch(DOCKET_CONFIG.FORM_ENDPOINT, opts);
         if (DOCKET_CONFIG.FORM_MODE !== 'no-cors' && !res.ok) throw new Error('HTTP ' + res.status);
       }
+      track('signup_submitted', { segment: payload.segment, cohort_arm: (payload.daily_care_provider === 'family_only' ? 'family_only' : 'paid_help'), role: payload.role, daily_care_provider: payload.daily_care_provider, persons_count: payload.persons_count, source: payload.source, preview });
       showSuccess(payload, preview);
     } catch (err) {
       console.error('[Docket] Submit failed', err);
@@ -937,13 +961,19 @@ const DOCKET_CONFIG = {
 
   function showSuccess(p, preview) {
     const next = {
-      launch_cohort: 'Because your family already has a nurse or helper, you’re a good fit for our first group. We’ll be in touch to schedule a welcome call.',
+      launch_cohort: DOCKET_CONFIG.BOOKING_URL ? 'You’re a good fit for our first group. Pick a time for your 20-minute welcome call:' : 'You’re a good fit for our first group. We’ll email you shortly to book your 20-minute welcome call.',
       nurture: 'We’ll email you before launch with what Docket can do for families who provide care themselves.',
       partner: 'Thanks for your interest in working with us. We’ll reach out by email about how Docket can support you and your patients.'
     }[p.segment];
     $('success-msg').textContent = 'We’ve saved ' + p.email + '.';
     $('success-next').textContent = next;
     $('success-demo').hidden = !preview;
+    const book = $('success-book');
+    if (p.segment === 'launch_cohort' && DOCKET_CONFIG.BOOKING_URL) {
+      book.href = DOCKET_CONFIG.BOOKING_URL;
+      book.hidden = false;
+      book.addEventListener('click', () => track('booking_clicked', { segment: p.segment }), { once: true });
+    }
     form.hidden = true;
     $('success').hidden = false;
     $('success').focus();
