@@ -369,6 +369,9 @@ legend + .chips, legend + .hint { margin-top: 10px; }
 .submit-row .fine { font-size: 12px; color: var(--ink-light); text-align: center; }
 .btn[disabled] { opacity: .6; cursor: progress; }
 
+#book[hidden] { display: none; }
+.book-card { display: grid; gap: 16px; max-width: 680px; }
+.book-card ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 .success:not([hidden]) { display: grid; gap: 14px; text-align: left; }
 .success .tick { width: 52px; height: 52px; border-radius: 50%; background: var(--green-soft); display: grid; place-items: center; }
 .success .tick svg { width: 26px; height: 26px; stroke: var(--green); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -635,7 +638,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <li><strong>Never sold</strong><span>Health information isn't sold or shared with advertisers, and isn't disclosed to anyone without explicit authorisation.</span></li>
           <li><strong>Support for care, not a diagnosis</strong><span>Docket doesn't diagnose and doesn't replace their doctor.</span></li>
         </ul>
-        <p class="emergency">Docket is not an emergency service. If a reading worries you, contact your doctor for further guidance, or call <b>110</b> for ambulance services if necessary. For chest pain, trouble breathing, weakness on one side, fainting or confusion, call <b>110</b> now.</p>
+        <p class="emergency">Docket is not an emergency service. If a reading worries you, contact your doctor for further guidance, or call <b>110</b> for ambulance services if necessary. For chest pain, trouble breathing, weakness on one side, fainting or confusion, contact the patient or caregiver immediately and make sure someone calls <b>110</b> now.</p>
       </div>
     </div>
   </section>
@@ -742,6 +745,27 @@ legend + .chips, legend + .hint { margin-top: 10px; }
     </div>
   </section>
 
+  <!-- ═══ BOOK A WELCOME CALL (docket-tech.com/#book) ═══
+       Hidden on normal visits so people register first (lead, consent and source land in the Sheet).
+       Shown when the link is opened as /#book (e.g. from our reply email) or after a qualified sign-up. -->
+  <section class="band band--alt" id="book" aria-labelledby="book-title" hidden>
+    <div class="wrap book-card">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="eyebrow">Welcome call</span>
+        <h2 id="book-title">Book your welcome call</h2>
+        <p>About 30 minutes by phone. We set up your Care Circle together, and check-ins start once your loved one says YES on WhatsApp.</p>
+      </div>
+      <ul>
+        <li>Your loved one's conditions and medicines</li>
+        <li>The blood pressure and sugar limits you want us to watch</li>
+        <li>Their blood pressure monitor, and glucometer if they have diabetes: we'll note the type</li>
+        <li>Who else should be kept updated</li>
+      </ul>
+      <p><a class="btn btn--primary" id="book-btn" href="#" target="_blank" rel="noopener">Pick a time for your welcome call</a></p>
+      <p class="fine">Not registered yet? <a href="#join">Register first</a>, it takes a minute. Docket is not an emergency service.</p>
+    </div>
+  </section>
+
   <!-- ═══ FAQ ═══ -->
   <section class="band" id="faq" aria-labelledby="faq-title">
     <div class="wrap">
@@ -830,7 +854,7 @@ const DOCKET_CONFIG = {
   CONSENT_VERSION: 'landing-v2-2026-11',
   SOURCE: 'landing_v2',
   /* Welcome-call booking page (Google Calendar "Docket Launch"). Leave '' to hide the button. */
-  BOOKING_URL: ''
+  BOOKING_URL: 'https://calendar.app.google/ku47KwkqhUoY2KVM9'
 };
 
 /* Analytics: PostHog, memory-only persistence (no cookies or local storage), no autocapture,
@@ -974,11 +998,30 @@ document.querySelectorAll('[data-cta]').forEach(a => {
       book.hidden = false;
       book.addEventListener('click', () => track('booking_clicked', { segment: p.segment }), { once: true });
     }
+    if (p.segment === 'launch_cohort') showBook('signup');
     form.hidden = true;
     $('success').hidden = false;
     $('success').focus();
   }
 })();
+
+/* #book: reveal on /#book or after a qualified sign-up */
+function showBook(via) {
+  var sec = document.getElementById('book'), btn = document.getElementById('book-btn');
+  if (!sec || !DOCKET_CONFIG.BOOKING_URL) return false;
+  btn.href = DOCKET_CONFIG.BOOKING_URL;
+  if (sec.hidden) {
+    sec.hidden = false;
+    track('book_section_viewed', { via: via });
+    btn.addEventListener('click', function () { track('booking_clicked', { via: 'book_section' }); }, { once: true });
+  }
+  return true;
+}
+function bookFromHash() {
+  if (location.hash === '#book' && showBook('link')) document.getElementById('book').scrollIntoView();
+}
+window.addEventListener('hashchange', bookFromHash);
+bookFromHash();
 </script>
 </body>
 </html>
