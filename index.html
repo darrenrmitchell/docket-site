@@ -423,7 +423,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-copy on-dark">
-        <span class="launch-pill"><span class="dot" aria-hidden="true"></span>Now taking founding households · Island-wide</span>
+        <span class="launch-pill"><span class="dot" aria-hidden="true"></span>First founding households start 30 November · Island-wide</span>
         <h1 id="hero-title">Looking after a loved one? <em>You’re not carrying it alone.</em></h1>
         <p class="hero-sub">Your loved one, or their nurse or helper, answers a short WhatsApp check-in each day: readings and medications. You see it in one place. If a reading crosses the limits you set, a person from our team checks it with you.</p>
         <p class="hero-qual">For families in Jamaica looking after a loved one with high blood pressure or diabetes, with a blood pressure monitor at home.</p>
@@ -635,7 +635,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
           <li><strong>Never sold</strong><span>Health information isn't sold or shared with advertisers, and isn't disclosed to anyone without explicit authorisation.</span></li>
           <li><strong>Support for care, not a diagnosis</strong><span>Docket doesn't diagnose and doesn't replace their doctor.</span></li>
         </ul>
-        <p class="emergency">Docket is not an emergency service. In an emergency call <b>119</b> (police) or <b>110</b> (ambulance and fire).</p>
+        <p class="emergency">Docket is not an emergency service. If a reading worries you, contact your doctor for further guidance, or call <b>110</b> for ambulance services if necessary. For chest pain, trouble breathing, weakness on one side, fainting or confusion, call <b>110</b> now.</p>
       </div>
     </div>
   </section>
@@ -725,7 +725,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
 
           <div class="submit-row">
             <button class="btn btn--primary" type="submit" id="submit-btn">Join the founding households</button>
-            <p class="fine">No payment now. We'll email you, and we never share your address.</p>
+            <p class="fine">No payment now. We'll email you within one working day, and we never share your address.</p>
             <p class="err" id="err-submit" role="alert" hidden></p>
           </div>
         </form>
@@ -752,7 +752,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
       <div class="faq">
         <details>
           <summary>How much does Docket cost?</summary>
-          <p>Founding households get founding terms, which we'll go through on your welcome call. There's nothing to pay to register your interest.</p>
+          <p>Founding households get founding terms, which we'll go through on your welcome call. There's nothing to pay to register, and nothing to pay until your first 7 days of check-ins are done.</p>
         </details>
         <details>
           <summary>Does my loved one need a smartphone?</summary>
@@ -776,7 +776,7 @@ legend + .chips, legend + .hint { margin-top: 10px; }
         </details>
         <details>
           <summary>What happens after I sign up?</summary>
-          <p>You can book a welcome call straight away. We set up your Care Circle on the call, and check-ins start once your loved one says YES on WhatsApp. You'll then receive a link to sign in to Docket.</p>
+          <p>We'll reply within one working day to book your welcome call. We set up your Care Circle on the call, and check-ins start once your loved one says YES on WhatsApp. The first founding households start on 30 November.</p>
         </details>
       </div>
     </div>
@@ -828,7 +828,7 @@ const DOCKET_CONFIG = {
   FORM_ENDPOINT: 'https://script.google.com/macros/s/AKfycbyjbfUnn3jlPyMI2n9PR6IEAIb7gLUzps_BMNrj1Gs6nRtOvee4NgeHz7ArmGQg6NZTMA/exec',
   FORM_MODE: 'no-cors',
   CONSENT_VERSION: 'landing-v2-2026-11',
-  SOURCE: 'landing_v1',
+  SOURCE: 'landing_v2',
   /* Welcome-call booking page (Google Calendar "Docket Launch"). Leave '' to hide the button. */
   BOOKING_URL: ''
 };
@@ -897,7 +897,7 @@ document.querySelectorAll('[data-cta]').forEach(a => {
   });
   $('email').addEventListener('input', () => setErr('f-email', 'err-email', false));
 
-  /* Segment tag: launch cohort = households already paying for care */
+  /* Segment tag: launch cohort = paid-help and family-only households (family-only tracked as its own arm, 24 Nov) */
   function segmentFor(role, provider) {
     if (role === 'nurse_helper' || role === 'clinician') return 'partner';
     if (provider === 'paid_nurse' || provider === 'paid_helper' || provider === 'mix' || provider === 'family_only') return 'launch_cohort';
@@ -961,7 +961,7 @@ document.querySelectorAll('[data-cta]').forEach(a => {
 
   function showSuccess(p, preview) {
     const next = {
-      launch_cohort: DOCKET_CONFIG.BOOKING_URL ? 'You’re a good fit for our first group. Pick a time for your 20-minute welcome call:' : 'You’re a good fit for our first group. We’ll email you shortly to book your 20-minute welcome call.',
+      launch_cohort: DOCKET_CONFIG.BOOKING_URL ? 'You’re a good fit for our first group. Pick a time for your welcome call (about 30 minutes):' : 'You’re a good fit for our first group. We’ll email you within one working day to book your welcome call (about 30 minutes).',
       nurture: 'We’ll email you before launch with what Docket can do for families who provide care themselves.',
       partner: 'Thanks for your interest in working with us. We’ll reach out by email about how Docket can support you and your patients.'
     }[p.segment];
